@@ -1,5 +1,8 @@
 ---
 import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
 // const pageTitle: string = "私について"; // こっちは型を明示しているのでTSでないとコンパイルエラーに
 const pageTitle = "私について"; // こっちはJS,TSで共通した記述だが、TSが使える場合はJSではなくTSの型推論として解釈される
 
@@ -47,10 +50,7 @@ const textCase = "uppercase";
     </style>
   </head>
   <body>
-    <a href="/">ホーム</a>
-    <a href="/about">概要</a>
-    <a href="/blog">ブログ</a>
-
+    <Header />
     <h1>{pageTitle}</h1>
     <h2>... そして私の新しいAstroサイトについて！</h2>
 
@@ -96,5 +96,16 @@ const textCase = "uppercase";
         <p>My goal is not 3 days. 3日が目標ではありません。</p>
       )
     }
+    <Footer />
+
+    <script>
+      document.querySelector(".hamburger")?.addEventListener("click", () => {
+        document.querySelector(".nav-links")?.classList.toggle("expanded");
+      });
+    </script>
+
+    <!-- <script>
+      import "../scripts/menu.ts";
+    </script> -->
   </body>
 </html>
